@@ -1,8 +1,10 @@
 package com.creche.crecheapp.controller;
 
 import com.creche.crecheapp.dto.ActivityDto;
+import com.creche.crecheapp.model.Activity;
 import com.creche.crecheapp.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,12 +27,12 @@ public class ActivityController {
     }
 
     @GetMapping("/{id}")
-    public ActivityDto getActivityById(@PathVariable Integer id) {
+    public Activity getActivityById(@PathVariable Integer id) {
         return activityService.getActivityById(id);
     }
 
     @GetMapping("/all")
-    public List<ActivityDto> getAllActivities() {
+    public List<Activity> getAllActivities() {
         return activityService.getAllActivities();
     }
 
@@ -45,6 +47,9 @@ public class ActivityController {
         activityService.deleteActivity(id);
     }
 
-
-
+    @GetMapping("/child/{childId}")
+    public ResponseEntity<List<Activity>> getActivitiesByChildId(@PathVariable Integer childId) {
+        List<Activity> activities = activityService.getActivitiesByChildId(childId);
+        return ResponseEntity.ok(activities);
+    }
 }

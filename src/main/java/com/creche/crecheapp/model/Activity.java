@@ -29,29 +29,31 @@ public class Activity {
     private String description;
     private ActivityType activityType;
     private int rate;
+    private String fileCode;
    //@JsonBackReference("childReference")
-    @JsonIgnoreProperties("activity")
+    //@JsonIgnoreProperties("activity")
+    @JsonIgnore
    @ManyToOne
     @JoinColumn(name = "child_id", nullable = false)
     private Child child;
-    private FileType fileType;
+
     //@JsonManagedReference
-    @JsonIgnoreProperties("activity")
+    /*@JsonIgnoreProperties("activity")
     @OneToMany(mappedBy= "activity",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private List<Homework> homework = new ArrayList<>();
+    private List<Homework> homework = new ArrayList<>();*/
 
     public Activity() {
     }
 
-    public Activity(Integer id, Date date, String description, ActivityType activityType, int rate, Child child, FileType fileType, List<Homework> homework) {
+    public Activity(Integer id, Date date, String description, ActivityType activityType, int rate, Child child, String fileCode, List<Homework> homework) {
         this.id = id;
         this.date = date;
         this.description = description;
         this.activityType = activityType;
         this.rate = rate;
       //  this.child = child;
-        this.fileType = fileType;
-        this.homework = homework;
+        this.fileCode = fileCode;
+
     }
 
     public Integer getId() {
@@ -102,19 +104,11 @@ public class Activity {
         this.child = child;
     }
 
-    public FileType getFileType() {
-        return fileType;
+    public String getFileCode() {
+        return fileCode;
     }
 
-    public void setFileType(FileType fileType) {
-        this.fileType = fileType;
-    }
-
-    public List<Homework> getHomework() {
-        return homework;
-    }
-
-    public void setHomework(List<Homework> homework) {
-        this.homework = homework;
+    public void setFileCode(String fileCode) {
+        this.fileCode = fileCode;
     }
 }

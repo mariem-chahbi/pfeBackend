@@ -28,8 +28,8 @@ public class HomeworkController {
         return service.createHomework(homework);
     }
     @GetMapping("/activitynote/{note}")
-    public List<Homework> getHomeworkByActivityNote(@RequestParam("note") int note) {
-          return service.getHomeworkByActivityNote(note);
+    public List<Homework> getHomeworkByActivityNote(@PathVariable("note") int note) {
+        return service.getHomeworkByActivityNote(note);
     }
     @GetMapping("/{id_Child}")
     public Homework findHomeworkById(
