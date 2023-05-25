@@ -119,15 +119,13 @@ public class ActivityServiceImpl implements ActivityService {
     }
 
     @Override
-    public Activity saveActivity(ActivityDto activityDto) {
+    public ActivityDto saveActivity(ActivityDto activityDto) {
         Activity activity = ActivityDto.toEntity(activityDto);
         Child child = childRepository.findById(activityDto.getChild().getId())
-                .orElseThrow(() -> new ResourceNotFoundException("Activity not saved. Child not found: " + activityDto.getChild().getId()));
-
-        activity.setChild(child); // Associate the child with the activity
+                .orElseThrow(() -> new ResourceNotFoundException("Activity not save  " + activityDto.getChild().getId()));
 
         activity = activityRepository.save(activity);
-        return activity; // Return the Activity object directly
+        return ActivityDto.fromEntity(activity);
     }
 
     @Override

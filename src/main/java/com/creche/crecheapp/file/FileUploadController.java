@@ -42,8 +42,13 @@ public class FileUploadController {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
 /*
     @PostMapping("/uploadFileByActivityId/{activityId}")
+=======
+
+  /*  @PostMapping("/uploadFileByActivityId/{activityId}")
+>>>>>>> 2b2c4f34e68e49ecb2c40213e72724d73486602f
     public ResponseEntity<?> uploadFileByActivityId(
             @PathVariable("activityId") Integer activityId,
             @RequestParam("file") MultipartFile multipartFile) throws IOException {
@@ -69,10 +74,10 @@ public class FileUploadController {
         response.setDownloadUri("/api/v1/file/downloadFile/" + fileCode);
 
         return ResponseEntity.ok(response);
-    }
+    }*/
 
 
-*/
+
     // Custom logic to retrieve the file code for the activity
 
 
