@@ -12,14 +12,18 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 
 @Table(name = "parent")
 public class Parent   implements Serializable {
     @Id
     @GeneratedValue
+    String firstname;
+    String lastname;
+
+
+    int CIN;
     private Integer id;
 /*
     @OneToOne(cascade = CascadeType.ALL)
@@ -35,10 +39,47 @@ public class Parent   implements Serializable {
     @Column(nullable = false)
     private String phoneNumber;
 
-    @JsonIgnoreProperties("parent")
+   /* @JsonIgnoreProperties("parent")
     //@JsonManagedReference
     @OneToMany(mappedBy = "parent",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    private List<Child> children;
+    private List<Child> children;*/
+
+    public Parent(String firstname, String lastname, int CIN, Integer id, String address, String location, String phoneNumber) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.CIN = CIN;
+        this.id = id;
+        this.address = address;
+        this.location = location;
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Parent() {
+    }
+
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+
+    public int getCIN() {
+        return CIN;
+    }
+
+    public void setCIN(int CIN) {
+        this.CIN = CIN;
+    }
 
     public Integer getId() {
         return id;
@@ -72,12 +113,12 @@ public class Parent   implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Child> getChildren() {
+   /* public List<Child> getChildren() {
         return children;
     }
 
     public void setChildren(List<Child> children) {
         this.children = children;
-    }
+    }*/
 }
 
