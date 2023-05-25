@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/v1/auth")
 public class LoginController {
     private final UserService userService;
-
+    private  UserRepository userRepository;
     public LoginController(UserService userService) {
         this.userService = userService;
     }
@@ -33,5 +33,15 @@ public class LoginController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
+    @GetMapping("/{email}/role")
+    public ResponseEntity<String> getUserRoleByEmail(@PathVariable String email) {
+        try {
+            String role = userService.getUserRoleByEmail(email);
+            return ResponseEntity.ok(role);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 
 }

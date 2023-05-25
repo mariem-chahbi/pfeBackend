@@ -1,11 +1,6 @@
 package com.creche.crecheapp.auth;
-
-import com.creche.crecheapp.auth.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.HashSet;
 
 @Service
 public class UserService {
@@ -35,8 +30,14 @@ public class UserService {
         }
         userRepository.save(user);
     }
-
-    public void initializeUsersWithRoles() {
+    public String getUserRoleByEmail(String email) {
+        User user = userRepository.findByUsername(email);
+        if (user == null) {
+            throw new IllegalArgumentException("User not found");
+        }
+        return user.getRole();
+    }
+/*    public void initializeUsersWithRoles() {
         User admin = new User("admin", "admin", new HashSet<>(Arrays.asList("ROLE_ADMIN")));
         User educator = new User("educator", "educator", new HashSet<>(Arrays.asList("ROLE_EDUCATOR")));
         User parent = new User("parent", "parent", new HashSet<>(Arrays.asList("ROLE_PARENT")));
@@ -44,5 +45,5 @@ public class UserService {
         createUser(admin);
         createUser(educator);
         createUser(parent);
-    }
+    }  */
 }

@@ -91,7 +91,7 @@ public class ChildDto {
                 .firstname(child.getFirstname())
                 .lastname(child.getLastname())
                 .dateOfBirth(child.getDateOfBirth())
-                .image(child.getImage())
+               // .image(child.getImage())
                 .age(child.getAge())
                 .build();
 
@@ -106,8 +106,8 @@ public class ChildDto {
         child.setFirstname(childDto.getFirstname());
         child.setLastname(childDto.getLastname());
         child.setDateOfBirth(childDto.getDateOfBirth());
-        child.setImage(childDto.getImage());
-        child.setAge(childDto.getAge());
+       // child.setImage(childDto.getImage());
+        //child.setAge(childDto.getAge());
         return child;
     }
 }

@@ -27,6 +27,7 @@ public class Activity {
     @Column(name = "creationDate", nullable = false)
     private Date date;
     private String description;
+
     private ActivityType activityType;
     private int rate;
    //@JsonBackReference("childReference")

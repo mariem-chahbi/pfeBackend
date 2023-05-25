@@ -20,7 +20,6 @@ import reactor.core.publisher.Mono;
 import java.util.stream.Stream;
 
 @Controller
-@CrossOrigin("http://localhost:8081")
 @RequestMapping("/api/v1/file")
 public class FileController {
   @Autowired
