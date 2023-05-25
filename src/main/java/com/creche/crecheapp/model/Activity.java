@@ -29,9 +29,10 @@ public class Activity {
     private String description;
     private ActivityType activityType;
     private int rate;
-    private String fileCode;
+   private String filecode;
    //@JsonBackReference("childReference")
     //@JsonIgnoreProperties("activity")
+
     @JsonIgnore
    @ManyToOne
     @JoinColumn(name = "child_id", nullable = false)
@@ -45,14 +46,14 @@ public class Activity {
     public Activity() {
     }
 
-    public Activity(Integer id, Date date, String description, ActivityType activityType, int rate, Child child, String fileCode, List<Homework> homework) {
+    public Activity(Integer id, Date date, String description, ActivityType activityType, int rate,String filecode, List<Homework> homework) {
         this.id = id;
         this.date = date;
         this.description = description;
         this.activityType = activityType;
         this.rate = rate;
       //  this.child = child;
-        this.fileCode = fileCode;
+         this.filecode = filecode;
 
     }
 
@@ -104,11 +105,11 @@ public class Activity {
         this.child = child;
     }
 
-    public String getFileCode() {
-        return fileCode;
+    public String getFilecode() {
+        return filecode;
     }
 
-    public void setFileCode(String fileCode) {
-        this.fileCode = fileCode;
+    public void setFilecode(String filecode) {
+        this.filecode = filecode;
     }
 }

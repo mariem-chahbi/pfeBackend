@@ -9,7 +9,7 @@ import com.creche.crecheapp.model.Activity;
 import java.util.List;
 
 public interface ActivityService {
-    ActivityDto saveActivity(ActivityDto activityDto);
+    Activity saveActivity(ActivityDto activityDto);
     List<Activity> getAllActivities();
     Activity getActivityById(Integer id);
     void deleteActivity(Integer id);

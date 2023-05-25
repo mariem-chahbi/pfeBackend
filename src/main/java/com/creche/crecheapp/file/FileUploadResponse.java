@@ -34,4 +34,6 @@ public class FileUploadResponse {
     public void setSize(long size) {
         this.size = size;
     }
+
+
 }

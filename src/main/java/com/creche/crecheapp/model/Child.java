@@ -27,7 +27,7 @@ public class Child implements Serializable {
 
     private LocalDate dateOfBirth;
 
-    private String image;
+    //private String image;
 
     @Transient
     private int age;
@@ -59,7 +59,7 @@ public class Child implements Serializable {
         this.firstname = firstname;
         this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
-        this.image = image;
+      //  this.image = image;
         this.age = age;
         this.activities = activities;
     }
@@ -70,7 +70,7 @@ public class Child implements Serializable {
         String firstname;
         String lastname;
         LocalDate dateOfBirth;
-        String image;
+       // String image;
         Parent parent;
         int age;
         List<Activity> activities;
@@ -109,13 +109,13 @@ public class Child implements Serializable {
         this.dateOfBirth = dateOfBirth;
     }
 
-    public String getImage() {
+/*    public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
-    }
+    }*/
 
     public int getAge() {
         return age;
