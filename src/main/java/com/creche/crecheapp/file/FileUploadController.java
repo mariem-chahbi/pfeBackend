@@ -42,7 +42,7 @@ public class FileUploadController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping("/uploadFileByActivityId/{activityId}")
+  /*  @PostMapping("/uploadFileByActivityId/{activityId}")
     public ResponseEntity<?> uploadFileByActivityId(
             @PathVariable("activityId") Integer activityId,
             @RequestParam("file") MultipartFile multipartFile) throws IOException {
@@ -68,7 +68,7 @@ public class FileUploadController {
         response.setDownloadUri("/api/v1/file/downloadFile/" + fileCode);
 
         return ResponseEntity.ok(response);
-    }
+    }*/
 
 
 
