@@ -34,12 +34,12 @@ public class Parent   implements Serializable {
 
     @Column(nullable = false)
     private String phoneNumber;
-
+/*
     @JsonIgnoreProperties("parent")
     //@JsonManagedReference
     @OneToMany(mappedBy = "parent",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Child> children;
-
+*/
     public Integer getId() {
         return id;
     }
@@ -71,7 +71,7 @@ public class Parent   implements Serializable {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-
+/*
     public List<Child> getChildren() {
         return children;
     }
@@ -79,5 +79,7 @@ public class Parent   implements Serializable {
     public void setChildren(List<Child> children) {
         this.children = children;
     }
+    */
+
 }
 
