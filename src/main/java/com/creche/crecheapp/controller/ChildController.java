@@ -5,6 +5,7 @@ import com.creche.crecheapp.model.Child;
 import com.creche.crecheapp.service.ChildService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -64,5 +65,15 @@ public class ChildController {
     @GetMapping("/childActivity/{id}")
     public List<Activity> getActivitiesByChildId(@PathVariable Integer id) {
         return service.getActivitiesByChildId(id);
+    }
+    @GetMapping(value = "/name/{id}")
+    public ResponseEntity<String> getChildName(@PathVariable("id") Integer id) {
+        Child child = service.findChildById(id);
+        if (child != null) {
+            String fullName = child.getFirstname() + " " + child.getLastname();
+            return ResponseEntity.ok(fullName);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
