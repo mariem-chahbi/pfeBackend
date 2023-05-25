@@ -19,7 +19,7 @@ public class ActivityDto {
         private ActivityType activityType;
         private int rate;
         private ChildDto child;
-        private FileType fileType;
+       // private FileType fileType;
     public static ActivityDto fromEntity(Activity activity) {
         if (activity == null) {
             return null;
@@ -31,7 +31,7 @@ public class ActivityDto {
                 .activityType(activity.getActivityType())
                 .rate(activity.getRate())
                 .child(ChildDto.fromEntity(activity.getChild()))
-                .fileType(activity.getFileType())
+               // .fileType(activity.getFileType())
                 .build();
     }
 
@@ -49,7 +49,7 @@ public class ActivityDto {
         activity.setActivityType(activityDto.getActivityType());
         activity.setRate(activityDto.getRate());
         activity.setChild(ChildDto.toEntity(activityDto.getChild()));
-        activity.setFileType(activityDto.getFileType());
+       // activity.setFileType(activityDto.getFileType());
         return activity;
     }
 
@@ -101,12 +101,12 @@ public class ActivityDto {
         this.child = child;
     }
 
-    public FileType getFileType() {
+   /* public FileType getFileType() {
         return fileType;
     }
 
     public void setFileType(FileType fileType) {
         this.fileType = fileType;
-    }
+    }*/
 }
 

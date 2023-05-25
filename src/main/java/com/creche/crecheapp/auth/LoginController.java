@@ -3,7 +3,7 @@ package com.creche.crecheapp.auth;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/auth")
 public class LoginController {

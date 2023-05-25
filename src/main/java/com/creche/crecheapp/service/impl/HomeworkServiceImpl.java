@@ -55,4 +55,5 @@ public class HomeworkServiceImpl implements HomeworkService {
             return repository.findByType(HomeworkType.DIFICILE);
         }
     }
+
 }

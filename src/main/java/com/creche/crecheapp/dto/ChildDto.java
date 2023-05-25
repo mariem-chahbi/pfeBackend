@@ -11,7 +11,7 @@ import java.time.LocalDate;
 public class ChildDto {
     private Integer id;
 
-    private String firstname;
+   private String firstname;
 
     private String lastname;
 
@@ -32,7 +32,6 @@ public class ChildDto {
     public void setId(Integer id) {
         this.id = id;
     }
-
     public String getFirstname() {
         return firstname;
     }
