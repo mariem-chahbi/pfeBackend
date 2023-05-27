@@ -13,7 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString*/
-
+  /*  @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
+*/
 @Entity
 @Table(name = "child")
 public class Child implements Serializable {
@@ -29,18 +32,14 @@ public class Child implements Serializable {
 
     //private String image;
 
-    @Transient
-    private int age;
 
-  /*  @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User user;
-*/
 
-    @JsonIgnoreProperties("child")
+
+
+   /* @JsonIgnoreProperties("child")
     @OneToMany(mappedBy = "child", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     /* @OneToMany(targetEntity = Child.class, cascade = CascadeType.ALL) */
-    private List<Activity> activities;
+   // private List<Activity> activities;
 
 
     //@JsonBackReference("parentReference")
@@ -49,19 +48,19 @@ public class Child implements Serializable {
     @JoinColumn(name = "parent_id")
     private Parent parent;
 
-    @JsonIgnoreProperties("child")
+  /*  @JsonIgnoreProperties("child")
     @ManyToOne
     @JoinColumn(name = "attendance_id")
-    private Attendance attendance;
+    private Attendance attendance;*/
 
-    public Child(Integer id, String firstname, String lastname, LocalDate dateOfBirth, String image, int age, List<Activity> activities, Attendance attendance) {
+    public Child(Integer id, String firstname, String lastname, LocalDate dateOfBirth) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
         //  this.image = image;
-        this.age = age;
-        this.activities = activities;
+     //   this.age = age;
+      //  this.activities = activities;
     }
 
 
@@ -72,9 +71,9 @@ public class Child implements Serializable {
         LocalDate dateOfBirth;
         // String image;
         Parent parent;
-        int age;
-        List<Activity> activities;
-        Attendance attendance;
+      //  int age;
+       // List<Activity> activities;
+       // Attendance attendance;
     }
 
     public Integer getId() {
@@ -117,21 +116,15 @@ public class Child implements Serializable {
         this.image = image;
     }*/
 
-    public int getAge() {
-        return age;
-    }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
 
-    public List<Activity> getActivities() {
+   /* public List<Activity> getActivities() {
         return activities;
     }
 
     public void setActivities(List<Activity> activities) {
         this.activities = activities;
-    }
+    }*/
 
     public Parent getParent() {
         return parent;
@@ -141,11 +134,15 @@ public class Child implements Serializable {
         this.parent = parent;
     }
 
-    public Attendance getAttendance() {
+  /*  public Attendance getAttendance() {
         return attendance;
     }
 
     public void setAttendance(Attendance attendance) {
         this.attendance = attendance;
+<<<<<<< HEAD
     }
+}
+=======
+    }*/
 }

@@ -30,7 +30,7 @@ public class Attendance implements Serializable {
     private Date creationDate;
     @JsonIgnoreProperties("attendance")
     //@JsonManagedReference
-    @OneToMany(mappedBy = "attendance",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = Child.class,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 
     private List<Child> children;
     private boolean present =false;

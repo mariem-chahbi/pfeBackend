@@ -43,7 +43,11 @@ public class ParentServiceImpl implements ParentService {
             existingParent.setAddress(parent.getAddress());
             existingParent.setLocation(parent.getLocation());
             existingParent.setPhoneNumber(parent.getPhoneNumber());
+
            // existingParent.setChildren(parent.getChildren());
+
+          //  existingParent.setChildren(parent.getChildren());
+
             // Update any other fields as needed
 
             return parentRepository.save(existingParent);

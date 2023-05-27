@@ -94,7 +94,7 @@ public class ChildDto {
                // .image(child.getImage())
 
               //  .image(child.getImage())
-                .age(child.getAge())
+              //  .age(child.getAge())
                 .build();
 
     }
@@ -112,7 +112,7 @@ public class ChildDto {
 
         //child.setAge(childDto.getAge());
 
-        child.setAge(childDto.getAge());
+        //child.setAge(childDto.getAge());
         return child;
     }
 }
