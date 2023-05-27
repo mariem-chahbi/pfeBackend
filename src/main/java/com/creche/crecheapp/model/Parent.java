@@ -19,12 +19,13 @@ import java.util.List;
 public class Parent   implements Serializable {
     @Id
     @GeneratedValue
+    private Integer id;
     String firstname;
     String lastname;
 
+    @Column(nullable = false)
+    String cin;
 
-    int CIN;
-    private Integer id;
 /*
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -44,10 +45,10 @@ public class Parent   implements Serializable {
     @OneToMany(mappedBy = "parent",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Child> children;*/
 
-    public Parent(String firstname, String lastname, int CIN, Integer id, String address, String location, String phoneNumber) {
+    public Parent(String firstname, String lastname, String cin, Integer id, String address, String location, String phoneNumber) {
         this.firstname = firstname;
         this.lastname = lastname;
-        this.CIN = CIN;
+        this.cin = cin;
         this.id = id;
         this.address = address;
         this.location = location;
@@ -73,12 +74,12 @@ public class Parent   implements Serializable {
         this.lastname = lastname;
     }
 
-    public int getCIN() {
-        return CIN;
+    public String getCin() {
+        return cin;
     }
 
-    public void setCIN(int CIN) {
-        this.CIN = CIN;
+    public void setCin(String cin) {
+        this.cin = cin;
     }
 
     public Integer getId() {

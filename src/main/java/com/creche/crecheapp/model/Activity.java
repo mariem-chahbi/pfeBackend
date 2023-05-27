@@ -27,7 +27,7 @@ public class Activity {
     @Column(name = "creationDate", nullable = false)
     private Date date;
     private String description;
-
+    @Enumerated(EnumType.STRING)
     private ActivityType activityType;
     private int rate;
    private String filecode;
