@@ -1,4 +1,5 @@
 package com.creche.crecheapp.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -7,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -41,12 +44,15 @@ public class Post  {
     @Lob
     private String content;
 
-    @Temporal(TemporalType.TIMESTAMP)
+
+    @CreationTimestamp
+    @JsonIgnore
     @Column(name = "created_at",  updatable = false)
     @CreatedDate
     private Date createdAt;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
+    @JsonIgnore
     @Column(name = "updated_at")
     @LastModifiedDate
     private Date updatedAt;
