@@ -19,13 +19,13 @@ public class Admin {
     private List<User> user;
 */
 
-    @JsonIgnoreProperties("Admin")
+   /* @JsonIgnoreProperties("Admin")
     //@JsonManagedReference
     @OneToMany(mappedBy = "admin",fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<Event> events;
     @JsonIgnoreProperties("Admin")
     //@JsonManagedReference
     @OneToMany(mappedBy = "admin",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private List<Post> posts;
+    private List<Post> posts;*/
 
 }
