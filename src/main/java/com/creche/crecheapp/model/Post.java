@@ -33,21 +33,21 @@ public class Post  {
 
     @NotNull
     private String description;
-    @JsonIgnoreProperties("post")
+  /* @JsonIgnoreProperties("post")
     @ManyToOne
     @JoinColumn(name = "admin_id")
-    private Admin admin;
+    private Admin admin;*/
     @NotNull
     @Lob
     private String content;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at",  updatable = false)
     @CreatedDate
     private Date createdAt;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at")
     @LastModifiedDate
     private Date updatedAt;
 
