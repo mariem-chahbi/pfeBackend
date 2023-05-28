@@ -23,11 +23,17 @@ public class Parent   implements Serializable {
     String firstname;
     String lastname;
 
-    //@Size(max = 8, message = "CIN must have a maximum length of 8")
+    @Size(max = 8, message = "CIN must have a maximum length of 8")
     String cin;
 
 
     /*
+=======
+    @Column(nullable = false)
+    String cin;
+
+/*
+>>>>>>> 2e79c88149bc8b479f495b0063c97a2b145531b5
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private User user;
