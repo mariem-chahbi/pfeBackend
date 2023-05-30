@@ -48,10 +48,9 @@ public class Child implements Serializable {
     @JoinColumn(name = "parent_id")
     private Parent parent;
 
-  /*  @JsonIgnoreProperties("child")
     @ManyToOne
     @JoinColumn(name = "attendance_id")
-    private Attendance attendance;*/
+    private Attendance attendance;
 
     public Child(Integer id, String firstname, String lastname, LocalDate dateOfBirth) {
         this.id = id;

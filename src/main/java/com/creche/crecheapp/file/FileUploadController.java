@@ -2,6 +2,7 @@ package com.creche.crecheapp.file;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.Paths;
 
 import com.creche.crecheapp.model.Activity;
 import com.creche.crecheapp.service.ActivityService;
@@ -14,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.validation.Path;
 
 
 @RestController
@@ -42,6 +45,7 @@ public class FileUploadController {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
 
 /*
     @PostMapping("/uploadFileByActivityId/{activityId}")

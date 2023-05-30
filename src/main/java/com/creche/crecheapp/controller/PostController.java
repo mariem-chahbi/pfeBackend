@@ -18,17 +18,17 @@ public class PostController {
     @Autowired
     private PostRepository postRepository;
 
-    @GetMapping("/posts")
+    @GetMapping("/all")
     public Page<Post> getAllPosts(Pageable pageable) {
         return postRepository.findAll(pageable);
     }
 
-    @PostMapping("/posts")
+    @PostMapping("/add")
     public Post createPost(@Valid @RequestBody Post post) {
         return postRepository.save(post);
     }
 
-    @PutMapping("/posts/{postId}")
+    @PutMapping("/update/{postId}")
     public Post updatePost(@PathVariable Long postId, @Valid @RequestBody Post postRequest) {
         return postRepository.findById(postId).map(post -> {
             post.setTitle(postRequest.getTitle());
@@ -39,7 +39,7 @@ public class PostController {
     }
 
 
-    @DeleteMapping("/posts/{postId}")
+    @DeleteMapping("/delete/{postId}")
     public ResponseEntity<?> deletePost(@PathVariable Long postId) {
         return postRepository.findById(postId).map(post -> {
             postRepository.delete(post);

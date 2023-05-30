@@ -26,11 +26,10 @@ public class Attendance implements Serializable {
 
     @CreationTimestamp
     @JsonIgnore
-    @Column(name = "creationDate", nullable = false)
+    @Column(name = "creationDate")
     private Date creationDate;
     @JsonIgnoreProperties("attendance")
-    //@JsonManagedReference
-    @OneToMany(targetEntity = Child.class,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "attendance",fetch = FetchType.LAZY)
 
     private List<Child> children;
     private boolean present =false;

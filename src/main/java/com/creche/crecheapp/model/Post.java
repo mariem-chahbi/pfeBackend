@@ -27,21 +27,18 @@ import java.util.Date;
 @Table(name = "post")
 public class Post  {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
 
-    @NotNull
-    @Column(unique = true)
+
+    @Column
     private String title;
 
-    @NotNull
+
     private String description;
-  /* @JsonIgnoreProperties("post")
-    @ManyToOne
-    @JoinColumn(name = "admin_id")
-    private Admin admin;*/
-    @NotNull
-    @Lob
+
+
+
     private String content;
 
 

@@ -30,12 +30,9 @@ public class Activity {
     @Enumerated(EnumType.STRING)
     private ActivityType activityType;
     private int rate;
-   private String filecode;
-   //@JsonBackReference("childReference")
-    //@JsonIgnoreProperties("activity")
 
     @JsonIgnore
-   @ManyToOne
+    @ManyToOne
     @JoinColumn(name = "child_id", nullable = false)
     private Child child;
 
@@ -54,7 +51,7 @@ public class Activity {
         this.activityType = activityType;
         this.rate = rate;
       //  this.child = child;
-         this.filecode = filecode;
+       // this.filecode = filecode;
 
     }
 
@@ -106,11 +103,5 @@ public class Activity {
         this.child = child;
     }
 
-    public String getFilecode() {
-        return filecode;
-    }
 
-    public void setFilecode(String filecode) {
-        this.filecode = filecode;
-    }
 }

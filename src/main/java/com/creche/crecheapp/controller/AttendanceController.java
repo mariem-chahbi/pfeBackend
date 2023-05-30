@@ -47,7 +47,7 @@ public class AttendanceController {
         return service.updateAttendance(student);
     }
 
-    @DeleteMapping("dlete/{id}")
+    @DeleteMapping("delete/{id}")
     public void delete(
             @PathVariable("id") Integer id
     ) {
