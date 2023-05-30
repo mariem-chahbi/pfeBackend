@@ -9,7 +9,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 public class FileUploadUtil {
-    public static String saveFile(String fileName, MultipartFile multipartFile) throws IOException {Path uploadPath = Paths.get("Files-Upload");
+   public static String saveFile(String fileName, MultipartFile multipartFile) throws IOException {Path uploadPath = Paths.get("Files-Upload");
         if (!Files.exists(uploadPath)) { Files.createDirectories(uploadPath);}
 String fileCode = RandomStringUtils.randomAlphanumeric(8);
 try (InputStream inputStream = multipartFile.getInputStream()) {
@@ -18,6 +18,24 @@ Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
 } catch (IOException ioe) {
 throw new IOException("Could not save file: " + fileName, ioe);
 }
+
 return fileCode;}
+   /*public static String saveFile(String fileName, MultipartFile multipartFile) throws IOException {
+       Path uploadPath = Paths.get("Files-Upload");
+       if (!Files.exists(uploadPath)) {
+           Files.createDirectories(uploadPath);
+       }
+
+       String fileCode = RandomStringUtils.randomAlphanumeric(8);
+       String filePath = uploadPath.resolve(fileCode + "-" + fileName).toString();
+
+       try (InputStream inputStream = multipartFile.getInputStream()) {
+           Files.copy(inputStream, Paths.get(filePath), StandardCopyOption.REPLACE_EXISTING);
+       } catch (IOException ioe) {
+           throw new IOException("Could not save file: " + fileName, ioe);
+       }
+
+       return filePath;
+   }*/
 }
 

@@ -13,7 +13,7 @@ import java.sql.Date;
 import java.util.List;
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+
 
 @Entity
 @Table(name = "attendance")
@@ -22,18 +22,23 @@ public class Attendance implements Serializable {
     @Id
     @GeneratedValue
     private Integer id;
-
+    @OneToOne( targetEntity =Child.class ,cascade = CascadeType.ALL)
+    private Child child;
 
     @CreationTimestamp
     @JsonIgnore
     @Column(name = "creationDate", nullable = false)
     private Date creationDate;
-    @JsonIgnoreProperties("attendance")
-    //@JsonManagedReference
-    @OneToMany(targetEntity = Child.class,fetch = FetchType.EAGER,cascade = CascadeType.ALL)
 
-    private List<Child> children;
+    //@JsonManagedReference
+
     private boolean present =false;
+
+    public Attendance(Integer id, Child child, Date creationDate, boolean present) {
+        this.id = id;
+        this.creationDate = creationDate;
+        this.present = present;
+    }
 
     public Integer getId() {
         return id;
@@ -51,12 +56,12 @@ public class Attendance implements Serializable {
         this.creationDate = creationDate;
     }
 
-    public List<Child> getChildren() {
-        return children;
+    public Child getChild() {
+        return child;
     }
 
-    public void setChildren(List<Child> children) {
-        this.children = children;
+    public void setChild(Child child) {
+        this.child = child;
     }
 
     public boolean isPresent() {

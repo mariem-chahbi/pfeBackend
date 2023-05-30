@@ -43,6 +43,8 @@ public class Child implements Serializable {
    // private List<Activity> activities;
 
 
+
+
     //@JsonBackReference("parentReference")
     @JsonIgnoreProperties("child")
     @ManyToOne
@@ -53,6 +55,7 @@ public class Child implements Serializable {
     @ManyToOne
     @JoinColumn(name = "attendance_id")
     private Attendance attendance;*/
+
 
     public Child(Integer id, String firstname, String lastname, LocalDate dateOfBirth, int age) {
         this.id = id;
@@ -125,7 +128,8 @@ public class Child implements Serializable {
         this.age = age;
     }
 
-   /* public List<Activity> getActivities() {
+
+    /* public List<Activity> getActivities() {
         return activities;
     }
 
