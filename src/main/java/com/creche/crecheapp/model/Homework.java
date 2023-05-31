@@ -26,6 +26,16 @@ public class Homework implements Serializable {
     private String description;
     private String image;
     private String text;
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
+    }
+    public String fileUrl="";
+
    /* @JsonIgnoreProperties("Homework")
     @ManyToOne
     @JoinColumn(name = "child_id")

@@ -30,7 +30,10 @@ public class Child implements Serializable {
 
     private LocalDate dateOfBirth;
 
-    //private String image;
+    public String fileUrl="";
+    @Transient
+    private int age;
+
 
 
 
@@ -39,7 +42,9 @@ public class Child implements Serializable {
    /* @JsonIgnoreProperties("child")
     @OneToMany(mappedBy = "child", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     /* @OneToMany(targetEntity = Child.class, cascade = CascadeType.ALL) */
-   // private List<Activity> activities;
+    // private List<Activity> activities;
+
+
 
 
     //@JsonBackReference("parentReference")
@@ -48,18 +53,20 @@ public class Child implements Serializable {
     @JoinColumn(name = "parent_id")
     private Parent parent;
 
+  /*  @JsonIgnoreProperties("child")
     @ManyToOne
     @JoinColumn(name = "attendance_id")
-    private Attendance attendance;
+    private Attendance attendance;*/
 
-    public Child(Integer id, String firstname, String lastname, LocalDate dateOfBirth) {
+
+    public Child(Integer id, String firstname, String lastname, LocalDate dateOfBirth, int age) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
         this.dateOfBirth = dateOfBirth;
         //  this.image = image;
-     //   this.age = age;
-      //  this.activities = activities;
+        this.age = age;
+
     }
 
 
@@ -68,11 +75,11 @@ public class Child implements Serializable {
         String firstname;
         String lastname;
         LocalDate dateOfBirth;
-        // String image;
+
         Parent parent;
-      //  int age;
-       // List<Activity> activities;
-       // Attendance attendance;
+        int age;
+        // List<Activity> activities;
+        // Attendance attendance;
     }
 
     public Integer getId() {
@@ -115,9 +122,16 @@ public class Child implements Serializable {
         this.image = image;
     }*/
 
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
 
 
-   /* public List<Activity> getActivities() {
+    /* public List<Activity> getActivities() {
         return activities;
     }
 
@@ -127,6 +141,14 @@ public class Child implements Serializable {
 
     public Parent getParent() {
         return parent;
+    }
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
     }
 
     public void setParent(Parent parent) {
@@ -139,9 +161,5 @@ public class Child implements Serializable {
 
     public void setAttendance(Attendance attendance) {
         this.attendance = attendance;
-<<<<<<< HEAD
-    }
-}
-=======
     }*/
 }

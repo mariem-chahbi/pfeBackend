@@ -31,28 +31,40 @@ public class Activity {
     private ActivityType activityType;
     private int rate;
 
+    public String fileUrl="";
+
+
+
+    public Activity(Integer id, Date date, String description, ActivityType activityType, int rate, Child child) {
+        this.id = id;
+        this.date = date;
+        this.description = description;
+        this.activityType = activityType;
+        this.rate = rate;
+
+        this.child = child;
+
+    }
+
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "child_id", nullable = false)
     private Child child;
+
+    public Activity() {
+    }
 
     //@JsonManagedReference
     /*@JsonIgnoreProperties("activity")
     @OneToMany(mappedBy= "activity",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<Homework> homework = new ArrayList<>();*/
 
-    public Activity() {
+    public String getFileUrl() {
+        return fileUrl;
     }
 
-    public Activity(Integer id, Date date, String description, ActivityType activityType, int rate,String filecode, List<Homework> homework) {
-        this.id = id;
-        this.date = date;
-        this.description = description;
-        this.activityType = activityType;
-        this.rate = rate;
-      //  this.child = child;
-       // this.filecode = filecode;
-
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
     }
 
     public Integer getId() {

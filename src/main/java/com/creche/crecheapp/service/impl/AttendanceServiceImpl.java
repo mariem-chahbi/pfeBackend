@@ -1,7 +1,9 @@
 package com.creche.crecheapp.service.impl;
 
 import com.creche.crecheapp.model.Attendance;
+import com.creche.crecheapp.model.Child;
 import com.creche.crecheapp.repository.AttendanceRepository;
+import com.creche.crecheapp.repository.ChildRepository;
 import com.creche.crecheapp.service.AttendanceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -14,15 +16,20 @@ public class AttendanceServiceImpl implements AttendanceService{
 
     private AttendanceRepository repository;
 
-    public AttendanceServiceImpl(AttendanceRepository repository) {
+    private final ChildRepository childRepository;
+
+    public AttendanceServiceImpl(AttendanceRepository repository, ChildRepository childRepository) {
         this.repository = repository;
+        this.childRepository = childRepository;
     }
-
     @Override
-
-    public Attendance createAttendance(Attendance c) {
-        return repository.save(c);
+    public Attendance createAttendance(Attendance attendance) {
+        // Fetch the child from the database using the child ID
+        Child child = childRepository.findChildById(attendance.getChild().getId());
+        attendance.setChild(child);
+        return repository.save(attendance);
     }
+
 
     @Override
     public List<Attendance> findAllAttendances() {

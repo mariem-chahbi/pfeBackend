@@ -9,7 +9,7 @@ import java.util.Date;
 @Builder
 @Data
 public class PostDto {
-    private Long id;
+    private Integer id;
     private String title;
     private String content;
     private Date created_at;

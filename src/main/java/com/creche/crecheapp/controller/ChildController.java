@@ -8,12 +8,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "/api/v1/child" ,consumes = MediaType.APPLICATION_JSON_VALUE)
 public class ChildController {
-    private final ChildService service;
+    private final ChildService childservice;
     @Autowired
     public ChildController(
 
@@ -22,7 +23,7 @@ public class ChildController {
 
 
     ) {
-        this.service = service;
+        this.childservice = service;
     }
 
     @PostMapping("/add")
@@ -32,7 +33,7 @@ public class ChildController {
     public Child save(
             @RequestBody Child child
     ) {
-        return service.createChild(child);
+        return childservice.createChild(child);
     }
 
 
@@ -40,40 +41,50 @@ public class ChildController {
     public Child findChildById(
             @PathVariable("id") Integer id
     ) {
-        return service.findChildById(id);
+        return childservice.findChildById(id);
     }
 
     @GetMapping ("/all")
 
     public List<Child> findAllChilds() {
-        return service.findAllChilds();
+        return childservice.findAllChilds();
     }
 
     @PutMapping("/update/{id}")
     public Child updateChild(@PathVariable("id") Integer id, @RequestBody Child child) {
         child.setId(id); // Assuming the child object has an ID field
-        return service.updateChild(child);
+        return childservice.updateChild(child);
     }
 
     @DeleteMapping("/delete/{id}")
     public void delete(
             @PathVariable("id") Integer id
     ) {
-        service.deleteById(id);
+        childservice.deleteById(id);
     }
 
     @GetMapping("/childActivity/{id}")
     public List<Activity> getActivitiesByChildId(@PathVariable Integer id) {
-        return service.getActivitiesByChildId(id);
+        return childservice.getActivitiesByChildId(id);
     }
     @GetMapping(value = "/name/{id}")
     public ResponseEntity<String> getChildName(@PathVariable("id") Integer id) {
-        Child child = service.findChildById(id);
+        Child child = childservice.findChildById(id);
         if (child != null) {
             String fullName = child.getFirstname() + " " + child.getLastname();
             return ResponseEntity.ok(fullName);
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+    @GetMapping("/getImageChild/{id}")
+    public List<String> getImagesByChildId(@PathVariable Integer id) {
+        Child child = childservice.findChildById(id);
+        String[] ids = child.fileUrl.split(",");
+        List<String> idsInt = new ArrayList<>();
+        for (String s : ids) {
+            idsInt.add(s);
+        }
+        return idsInt;
     }
 }

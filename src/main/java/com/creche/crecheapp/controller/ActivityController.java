@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -51,5 +52,16 @@ public class ActivityController {
     public ResponseEntity<List<Activity>> getActivitiesByChildId(@PathVariable Integer childId) {
         List<Activity> activities = activityService.getActivitiesByChildId(childId);
         return ResponseEntity.ok(activities);
+    }
+
+    @GetMapping("/getImageActivity/{id}")
+    public List<String> getImagesByActivityId(@PathVariable Integer id) {
+        Activity activity = activityService.getActivityById(id);
+        String[] ids = activity.fileUrl.split(",");
+        List<String> idsInt = new ArrayList<>();
+        for (String s : ids) {
+            idsInt.add(s);
+        }
+        return idsInt;
     }
 }

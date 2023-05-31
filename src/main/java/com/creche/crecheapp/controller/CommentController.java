@@ -29,7 +29,7 @@ public class CommentController {
     }
 
     @PostMapping("/posts/{postId}/comments")
-    public Comment createComment(@PathVariable (value = "postId") Long postId,
+    public Comment createComment(@PathVariable (value = "postId") Integer postId,
                                  @Valid @RequestBody Comment comment) {
         return postRepository.findById(postId).map(post -> {
             comment.setPost(post);
@@ -38,7 +38,7 @@ public class CommentController {
     }
 
     @PutMapping("/posts/{postId}/comments/{commentId}")
-    public Comment updateComment(@PathVariable (value = "postId") Long postId,
+    public Comment updateComment(@PathVariable (value = "postId") Integer postId,
                                  @PathVariable (value = "commentId") Long commentId,
                                  @Valid @RequestBody Comment commentRequest) {
         if(!postRepository.existsById(postId)) {

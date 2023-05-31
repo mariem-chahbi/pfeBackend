@@ -28,7 +28,7 @@ import java.util.Date;
 public class Post  {
     @Id
     @GeneratedValue
-    private Long id;
+    private Integer id;
 
 
     @Column
@@ -40,6 +40,7 @@ public class Post  {
 
 
     private String content;
+    public String fileUrl="";
 
 
     @CreationTimestamp
@@ -54,24 +55,59 @@ public class Post  {
     @LastModifiedDate
     private Date updatedAt;
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
+    }
+
     public Date getCreatedAt() {
         return createdAt;
-    }
-
-    public Date getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }
 
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-    // Getters and Setters (Omitted for brevity)
 }

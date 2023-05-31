@@ -1,11 +1,13 @@
 package com.creche.crecheapp.controller;
 
+import com.creche.crecheapp.model.Child;
 import com.creche.crecheapp.model.Homework;
 import com.creche.crecheapp.repository.HomeworkRepository;
 import com.creche.crecheapp.service.HomeworkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -55,5 +57,16 @@ public class HomeworkController {
             @PathVariable("id") Integer id
     ) {
         service.deleteById(id);
+    }
+
+    @GetMapping("/getImageHomework/{id}")
+    public List<String> getImagesByChildId(@PathVariable Integer id) {
+        Homework homework = service.findHomeworkById(id);
+        String[] ids = homework.fileUrl.split(",");
+        List<String> idsInt = new ArrayList<>();
+        for (String s : ids) {
+            idsInt.add(s);
+        }
+        return idsInt;
     }
 }

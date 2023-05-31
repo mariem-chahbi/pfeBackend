@@ -16,7 +16,7 @@ public interface PostService {
 
 
 
-    public void deletePostById(Long id);
+    public void deletePostById(Integer id);
 
-    Post findPostById(Long id);
+    Post findPostById(Integer id);
 }
